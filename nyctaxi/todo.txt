@@ -1,0 +1,34 @@
+we want to cluster book an make it something so it has a distance from another book
+each book has a word and the number of times that the word appears in a certain from 
+want to use actual words 
+thwe word and number of times that word appears
+remove stop words such as and, or, of, the
+
+book A /// Book B
+	- different words 
+	- different counts 
+
+A = Desk - 2 | subscriptions - 1
+B = Collection - 1  | given - 2
+
+How siliar is A && B? 
+
+A -- <Apple, banana, bucker, chair ..>
+B -- <0.00, 0.002, 0.001, ,,, > -- percent of words in the book that are woords 
+
+Repesentation: the book as a vector (bag of words) 
+
+*these vectors will be sparse 
+
+Stemming: (porter stemmer)
+	apples -> apple
+	jane's -> jane
+
+Leminatization: 
+	running -> run
+	runs -> run
+	ran -> run
+
+how many words and which?
+import nctk / spark
+

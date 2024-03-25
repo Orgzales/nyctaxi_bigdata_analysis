@@ -26,3 +26,13 @@ plt.savefig('iris-clusters.png')
 
 #t-sne
 plt.clf()
+
+from sklearn.manifold import TSNE
+import seaborn as sns
+tsne = TSNE(n_components=2)
+X_tsne = tsne.fit_transform(X)
+df['tsne1'] = X_tsne[:, 0]
+df['tsne2'] = X_tsne[:, 1]
+sns.scatterplot(x='tsne1', y='tsne2', hue='cluster', data=df)
+plt.savefig('iris-tsne.png')
+
