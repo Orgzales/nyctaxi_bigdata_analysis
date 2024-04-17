@@ -1,7 +1,7 @@
 ## What is the HTRC Dataset?
         - stockpile of books where we only get "features" about each book: words (an part-of-speech) appearing on the page in terms of courts, not the original text
-        - lots of books: 17mil, multi-lingual
-
+        - lots of books: 17mil, multi-lingual, location for file: /data/htrc/
+	
 ## What is the goal?
         - Determine similarity between every book and every other book
 
@@ -25,14 +25,21 @@
 			- Use stemming / emmatization ( drop plurals, -ing, etc)?
 		- save this word ordeing/list to a fie for later quarying.
 	- Initialize fais index (blank)
+		- What kind of faiss index?
+			- index CFPQ with 256-dim vectors with 4096 clutsers and 16 bit quantization
+
 	- Now, for each book:
 		- Save book filename / id pair to a file
 		- now for each book (in random order to get a good estimate of processing time per book):
-		- Open the book's Data file, get the tokens (words) from the file, and make a binary vector representing the words ( from the most common ) that are found in this book
+		- Save book firename / id pair to a file 
+		- Open the book's Data file, get the tokens (words) from the file, and make a binary vector representing the words ( from the most common ) 
+		- that are found in this book holds the ratio of each word's frequencyt vs. total number of words in that book,
+		-  
 			- Binary = 1 or 0 for each word, not a count).
 		- Save the vector into faiss:
 			- what is faiss? An efficient vector store that can handle a large number of vectors, and in particular, has effcient algorithms for finding the most similar vectors fiven a query vector.
-	- Save faiss index to disk.
+	- Train a PCA model on the random subset vectors with n_components = 256; save this model
+	- save faiss index to disk eery 1000 iterations
 
 ## Querying: 
 	- receive a book's filename as input, open the file, get the tokens
